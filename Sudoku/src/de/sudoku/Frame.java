@@ -55,6 +55,8 @@ public class Frame implements Runnable{
 	}
 	
 	private class Screen extends JPanel{
+		private static final long serialVersionUID = 7689830280226953237L;
+
 		@Override
 		public void paint(Graphics g){
 			super.paintComponent(g);

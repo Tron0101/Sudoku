@@ -11,7 +11,6 @@ public class Cell {
 	public Cell(byte size){
 		this.size = size;
 		value = -1;
-		int i;
 	}
 	
 	public void paint(Graphics g, int x, int y){
