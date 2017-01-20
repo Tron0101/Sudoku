@@ -15,7 +15,7 @@ public class Frame implements Runnable{
 	private JFrame f;
 	private Screen screen;
 	private Cell[][] cells = new Cell[9][9];
-	private final byte CELLSIZE = 50;
+	public static final byte CELLSIZE = 50;
 	private final int CELLNUMBER = 9;
 	
 	public Frame() {
@@ -32,7 +32,7 @@ public class Frame implements Runnable{
 		f.add(screen);
 		for(int x = 0;x<cells.length;x++){
 			for(int y = 0;y<cells.length;y++){
-				cells[x][y] = new Cell(CELLSIZE);
+				cells[x][y] = new Cell(CELLSIZE, x, y);
 			}
 		}
 		new Thread(this).start();
