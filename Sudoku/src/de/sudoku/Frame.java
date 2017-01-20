@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 public class Frame extends JFrame implements Runnable{
 	
+	private static final long serialVersionUID = 346124674397208574L;
 	private Screen screen;
 	private Cell[][] cells = new Cell[9][9];
 	public static final byte CELLSIZE = 50;
