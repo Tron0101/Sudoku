@@ -42,7 +42,6 @@ public class Frame implements Runnable{
 	public void run(){
 		while(true){
 			screen.repaint();
-		
 		try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
