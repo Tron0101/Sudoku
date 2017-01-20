@@ -1,9 +1,12 @@
 package de.sudoku;
 
 public class Sudoku {
+	/*
+	 * Starts the program
+	 */
 	public static void main(String[] args) {
 		Frame f  = new Frame();
-		f.getFrame().setVisible(true);
+		f.setVisible(true);
 	}
 
 }
