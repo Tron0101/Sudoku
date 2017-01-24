@@ -116,7 +116,6 @@ public class Frame extends JFrame implements Runnable{
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
 			
 		}
 
@@ -133,13 +132,18 @@ public class Frame extends JFrame implements Runnable{
 		 */
 		@Override
 		public void mousePressed(MouseEvent e) {
-			if(e.getX()<screen.getWidth() && e.getY() < screen.getHeight()){
-				int x = (int) (e.getX()/CELLSIZE);
-				int y = (int) (e.getY()/CELLSIZE);
+			int x = (int) (e.getX()/CELLSIZE);
+			int y = (int) (e.getY()/CELLSIZE);
+			
+			if(e.getX()<screen.getWidth() && e.getY() < screen.getHeight()&& e.getButton()==MouseEvent.BUTTON1){
+				cells[x][y].greyOut();
+				dialog.blockNumbers(new byte[]{1,2,3});
 				dialog.setLocationRelativeTo(screen);
 				dialog.setVisible(true);
 				cells[x][y].setValue(dialog.returnValue());
-			}
+				cells[x][y].setNormalColor();
+			}else if(e.getButton()==MouseEvent.BUTTON3) 
+				cells[x][y].setValue((byte)  -1);
 			
 		}
 

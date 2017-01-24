@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 public class Cell {
 	
 	private byte value, size;
-	private Color c = new Color(255, 0, 0);
+	private Color c = new Color(176, 226, 255);
 	
 	/**
 	 * Initializes a cell
@@ -41,6 +41,13 @@ public class Cell {
 	
 	public void setColor(Color c){
 		this.c = c;
+	}
+	
+	public void setNormalColor(){
+		c = new Color(176, 226, 255);
+	}
+	public void greyOut(){
+		c = new Color(199,199,199);
 	}
 
 	public byte getValue() {

@@ -32,7 +32,7 @@ public class Dialog extends JDialog implements KeyListener{
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		init();		
 		this.addKeyListener(this);
-		this.setUndecorated(true);
+		this.setUndecorated(true);	// hide and show problem
 	}
 	
 	/**
@@ -44,6 +44,7 @@ public class Dialog extends JDialog implements KeyListener{
 			buttons[i] = new JButton(Integer.toString(i+1));
 			buttons[i].setBackground(Color.gray);
 			buttons[i].setFont(new Font("Arial", Font.BOLD, 20));
+			buttons[i].setFocusable(false);
 			buttons[i].addActionListener(new ActionListener(){
 
 				@Override
@@ -56,6 +57,19 @@ public class Dialog extends JDialog implements KeyListener{
 			this.add(buttons[i]);
 			
 		}
+	}
+	
+	public void blockNumbers(byte[] numbers){
+		for(int i = 0;i<numbers.length;i++){
+			buttons[numbers[i]].setEnabled(false);
+		}
+	}
+	
+	public void resetButtons(){
+		for(int i = 0;i<buttons.length;i++){
+			buttons[i].setEnabled(true);
+		}
+				
 	}
 	
 	/**
