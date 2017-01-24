@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 public class Cell {
 	
 	private byte value, size;
-	private Color c = new Color(255);
+	private Color c = new Color(255, 0, 0);
 	
 	/**
 	 * Initializes a cell

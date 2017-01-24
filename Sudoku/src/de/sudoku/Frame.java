@@ -18,7 +18,8 @@ public class Frame extends JFrame implements Runnable{
 	private static final long serialVersionUID = 346124674397208574L;
 	private Screen screen;
 	private Cell[][] cells = new Cell[9][9];
-	public static final byte CELLSIZE = 50;
+	protected static final byte CELLSIZE = 50;
+	private Dialog dialog;
 	private final int CELLNUMBER = 9;
 	
 	/**
@@ -38,6 +39,8 @@ public class Frame extends JFrame implements Runnable{
 		screen.setBounds(0, 0, CELLSIZE*CELLNUMBER+1 ,CELLSIZE*CELLNUMBER+1);
 		screen.setBackground(Color.red);
 		this.add(screen);
+		
+		dialog = new Dialog(screen, CELLSIZE*CELLNUMBER); 
 		
 		//Init Cells
 		for(int x = 0;x<cells.length;x++){
@@ -90,6 +93,12 @@ public class Frame extends JFrame implements Runnable{
 					cells[x][y].paint(g2, x*CELLSIZE, y*CELLSIZE);;
 				}
 			}
+			g2.setColor(Color.black);
+			g2.drawLine(CELLSIZE*3-1, 0, CELLSIZE*3-1, CELLSIZE*9);
+			g2.drawLine(CELLSIZE*6-1, 0, CELLSIZE*6-1, CELLSIZE*9);
+			g2.drawLine(0, CELLSIZE*3-1, CELLSIZE*9, CELLSIZE*3-1);
+			g2.drawLine(0, CELLSIZE*6-1, CELLSIZE*9, CELLSIZE*6-1);
+			
 		}
 	}
 	
@@ -127,8 +136,9 @@ public class Frame extends JFrame implements Runnable{
 			if(e.getX()<screen.getWidth() && e.getY() < screen.getHeight()){
 				int x = (int) (e.getX()/CELLSIZE);
 				int y = (int) (e.getY()/CELLSIZE);
-				Dialog d = new Dialog(screen, CELLSIZE*CELLNUMBER); //Unschoen
-				cells[x][y].setValue(d.returnValue());
+				dialog.setLocationRelativeTo(screen);
+				dialog.setVisible(true);
+				cells[x][y].setValue(dialog.returnValue());
 			}
 			
 		}
