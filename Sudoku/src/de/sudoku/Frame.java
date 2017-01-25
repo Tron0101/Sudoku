@@ -5,22 +5,30 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
 
-public class Frame extends JFrame implements Runnable{
+public class Frame extends JFrame implements Runnable, ActionListener, MouseListener
+{
 	
 	private static final long serialVersionUID = 346124674397208574L;
-	private Screen screen;
-	private Cell[][] cells = new Cell[9][9];
-	protected static final byte CELLSIZE = 50;
-	private Dialog dialog;
 	private final int CELLNUMBER = 9;
+	protected static final byte CELLSIZE = 50;
+	
+	
+	private Screen screen;
+	private JButton solve, save, load;
+	private Dialog dialog;
+	private Cell[][] cells = new Cell[9][9];
+	
 	
 	/**
 	 * Loads the Frame and its components
@@ -34,12 +42,23 @@ public class Frame extends JFrame implements Runnable{
 		this.setLayout(null);
 		this.setResizable(false);
 		
+		
+		
+		//Init buttons
+		solve = new JButton("Solve");
+		solve.setBounds(CELLSIZE*CELLNUMBER+50, 50, 250, 40);
+		solve.setBackground(Color.gray);
+		solve.addActionListener(this);
+		solve.setFocusable(false);
+		this.add(solve);
+		
 		//Init JPanel aka Screen
-		screen = new Screen();screen.addMouseListener(new Handler());
+		screen = new Screen();screen.addMouseListener(this);
 		screen.setBounds(0, 0, CELLSIZE*CELLNUMBER+1 ,CELLSIZE*CELLNUMBER+1);
 		screen.setBackground(Color.red);
 		this.add(screen);
 		
+		//Init Dialog
 		dialog = new Dialog(screen, CELLSIZE*CELLNUMBER); 
 		
 		//Init Cells
@@ -102,13 +121,7 @@ public class Frame extends JFrame implements Runnable{
 		}
 	}
 	
-	/**
-	 * 
-	 * @author Dennis
-	 *	MouseListener for the Screen class
-	 */
-	private class Handler implements MouseListener{
-
+	
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			
@@ -137,7 +150,6 @@ public class Frame extends JFrame implements Runnable{
 			
 			if(e.getX()<screen.getWidth() && e.getY() < screen.getHeight()&& e.getButton()==MouseEvent.BUTTON1){
 				cells[x][y].greyOut();
-				dialog.blockNumbers(new byte[]{0,1,2,3});
 				dialog.setLocationRelativeTo(screen);
 				dialog.setVisible(true);
 				cells[x][y].setValue(dialog.returnValue());
@@ -154,6 +166,19 @@ public class Frame extends JFrame implements Runnable{
 			
 		}
 		
+	
+	
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==solve){
+			
+		}
+		else if(e.getSource()==save){
+			
+		}
 	}
 	
 		

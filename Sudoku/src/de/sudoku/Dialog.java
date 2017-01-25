@@ -42,7 +42,7 @@ public class Dialog extends JDialog implements KeyListener{
 	private void init(){
 		for(int i = 0; i<buttons.length;i++){
 			buttons[i] = new JButton(Integer.toString(i+1));
-			buttons[i].setBackground(Color.gray);
+			buttons[i].setBackground(Color.GRAY);
 			buttons[i].setFont(new Font("Arial", Font.BOLD, 20));
 			buttons[i].setFocusable(false);
 			buttons[i].addActionListener(new ActionListener(){
