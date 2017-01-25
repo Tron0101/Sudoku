@@ -137,11 +137,12 @@ public class Frame extends JFrame implements Runnable{
 			
 			if(e.getX()<screen.getWidth() && e.getY() < screen.getHeight()&& e.getButton()==MouseEvent.BUTTON1){
 				cells[x][y].greyOut();
-				dialog.blockNumbers(new byte[]{1,2,3});
+				dialog.blockNumbers(new byte[]{0,1,2,3});
 				dialog.setLocationRelativeTo(screen);
 				dialog.setVisible(true);
 				cells[x][y].setValue(dialog.returnValue());
 				cells[x][y].setNormalColor();
+				
 			}else if(e.getButton()==MouseEvent.BUTTON3) 
 				cells[x][y].setValue((byte)  -1);
 			
